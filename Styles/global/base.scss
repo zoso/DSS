@@ -1,0 +1,133 @@
+body {
+	font-family: $base-font-family;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+	margin: 0;
+	padding: 0;
+	background-color: #fff;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+embed,
+img,
+object,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+	font-weight: $bold;
+}
+
+.h1 {
+	@include font-sizer($h1-font-sizes);
+}
+
+.h2 {
+	@include font-sizer($h2-font-sizes);
+}
+
+.h3 {
+	@include font-sizer($h3-font-sizes);
+}
+
+.h4 {
+	@include font-sizer($h4-font-sizes);
+}
+
+.h5 {
+	@include font-sizer($h5-font-sizes);
+}
+
+.hyphenate {
+     hyphens: auto;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+	@include transition(color .2s ease);
+    &:hover,
+    &:focus {
+    	color: white;
+        text-decoration: underline;
+    }
+}
+
+.box {
+    @include my_padding(10px);
+    border: 1px solid red;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	list-style-type: none;
+	li {
+		
+	}
+}
+
+figure {
+	margin: 0;
+	padding: 0;
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+header,
+main,
+footer,
+section {
+	//padding: (20/$base)*1em 0;
+}
+
+header {
+	background-color: $main-col;
+	color: white;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	border: 0;
+}
+
+.hidden-sm {
+	@extend %visuallyhidden;
+}
+
+p {
+    margin: 0;
+    @include font-sizer($p-font-sizes);
+}
+
+[class*="col-"] {
+	outline: 1px dashed #222;
+}

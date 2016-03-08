@@ -1,0 +1,53 @@
+.main-row {
+	background-color: #222;
+}
+
+.main-nav {
+	&-list {
+		float: right;
+		margin-top: 20px;
+		&-item {
+			float: left;
+			margin-right: 30px;
+			a {
+				color: white;
+				border-bottom: none;
+				&:hover,
+				&:focus {
+					text-decoration: none;
+					border-bottom: 2px solid white;
+				}
+			}
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+.mega-menu {
+	display: none;
+	a {
+		color: white;
+		border-bottom: none;
+		&:hover,
+		&:focus {
+			text-decoration: none;
+			border-bottom: 2px solid white;
+		}
+	}
+	&.is-active {
+		display: block;
+	}
+}
+
+
+.logo {
+	height: 46px;
+	line-height: 42px;
+	margin-top: 7px;
+	margin-bottom: 10px;
+	background: transparent url("/UI/love.svg") no-repeat 0 0;
+	-webkit-background-size: auto 100%;
+	background-size: auto 100%;
+}

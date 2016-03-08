@@ -1,0 +1,172 @@
+
+@mixin linx ($link, $visit, $hover, $active) {
+	a {
+    	color: $link;
+    &:visited {
+    	color: $visit;
+    }
+    &:hover {
+    	color: $hover;   
+    }
+    &:active {
+    	color: $active;
+    }
+  }
+}
+
+//@include linx(white, blue, green, red);
+
+@function calculateRem($size) {
+    $remSize: $size/16px;
+    @return $remSize*1rem;
+}
+
+$default-line-height: 1.4 !default;
+/* @mixin font-size($size, $lineheight: $default-line-height) {
+    font-size: $size;
+    font-size: calculateRem($size);
+    line-height: $lineheight + px; //fallback for old browsers
+    line-height: (0.125 * $lineheight) + rem; */
+@mixin font-size($sizeValue: 16, $line: $sizeValue * $default-line-height) {
+    font-size: ($sizeValue) + px;
+    line-height: ($line) + px;
+    font-size: ($sizeValue / 16) + rem;
+    line-height: ($line / 16) + rem;
+}
+//font size - example:
+$p-font-sizes: (
+    null: 14,
+    $screen-sm-em: 16,
+    $screen-md-em: 18,
+    $screen-lg-em: 24
+);
+
+$h1-font-sizes: (
+    null: 24,
+    $screen-sm-em: 32,
+    $screen-md-em: 40,
+    $screen-lg-em: 48
+);
+
+$h2-font-sizes: (
+    null: 20,
+    $screen-sm-em: 28,
+    $screen-md-em: 36,
+    $screen-lg-em: 44
+);
+
+$h3-font-sizes: (
+    null: 18,
+    $screen-sm-em: 26,
+    $screen-md-em: 34,
+    $screen-lg-em: 40
+);
+
+$h4-font-sizes: (
+    null: 16,
+    $screen-sm-em: 24,
+    $screen-md-em: 32,
+    $screen-lg-em: 38
+);
+
+$h5-font-sizes: (
+    null: 14,
+    $screen-sm-em: 20,
+    $screen-md-em: 28,
+    $screen-lg-em: 34
+);
+
+@mixin font-sizer($fs-map) {
+    @each $fs-breakpoint, $fs-font-size in $fs-map {
+        @if $fs-breakpoint == null {
+            @include font-size($fs-font-size)
+        }
+        @else {
+            @media screen and (min-width: $fs-breakpoint) {
+                @include font-size($fs-font-size)
+            }
+        }
+    }
+}
+
+//Media queries
+
+@mixin screen-lg {
+    @media only screen and (max-width: $screen-lg-em) {
+        @content;
+    }
+}
+
+@mixin screen-md {
+    @media only screen and (max-width: $screen-md-em) {
+        @content;
+    }
+}
+
+@mixin screen-sm {
+    @media only screen and (max-width: $screen-sm-em) {
+        @content;
+    }
+}
+
+//transistions
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+//@include transition(color .3s ease)
+
+//opacity
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+//Hidden
+%visuallyhidden {
+    margin: -1px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+    position: absolute;
+}
+
+//border radius
+$default-border-radius: 5px !default;
+@mixin border-radius($radius: $default-border-radius) {
+    -moz-border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+//text overflow
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+@mixin my_padding($nr) {
+	padding: $nr;
+}
